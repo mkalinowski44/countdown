@@ -10,7 +10,7 @@ JS
 ```js
 var countdown = new Countdown(".counter", {
    date: "14.1.2020 7:00",
-   template: "Pozostało: {D} Dni,
+   template: "Pozostało: {D} Dni, {H} Godzin, {M} minut i {S} sekund",
    endText: "Odliczanie zakończone",
    addZero: true,
    serverTime: "13.1.2020 7:00"
