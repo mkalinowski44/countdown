@@ -34,13 +34,28 @@ class Countdown {
    }
 
    convertDate(dateString) {
+      
       let dateSplit = dateString.split(' ')
       let dateDays = dateSplit[0].split('.')
       let dateHours = dateSplit[1] ? dateSplit[1].split(':') : [0, 0, 0]
-      let date
+      if(!dateHours[1]) {
+         dateHours[1] = 0
+      }
+      if(!dateHours[2]) {
+         dateHours[2] = 0
+      }
 
       try {
-         date = new Date(`${dateDays[1]}.${dateDays[0]}.${dateDays[2]} ${dateHours[0]}:${dateHours[1]}:${dateHours[2] ? dateHours[2] : 0}`)
+         // date = new Date(`${dateDays[1]}.${dateDays[0]}.${dateDays[2]} ${dateHours[0]}:${dateHours[1]}:${dateHours[2] ? dateHours[2] : 0}`)
+         date = new Date(
+            parseInt(dateDays[2]),
+            parseInt(dateDays[1]) - 1,
+            parseInt(dateDays[0]),
+            parseInt(dateHours[0]),
+            parseInt(dateHours[1]),
+            parseInt(dateHours[2]))
+            
+         
       } catch(error) {
          console.error('Invalid date format')
          return
@@ -51,6 +66,7 @@ class Countdown {
 
    setTime() {
       let currentDate = this.serverTime || Date.now();
+      
       let diffDateTimestamp = (this.date - currentDate) / 1000
 
       if(diffDateTimestamp > 0) {
