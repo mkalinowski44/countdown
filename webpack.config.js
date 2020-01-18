@@ -1,5 +1,4 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin')
-const htmlWebpackAlterAssetPlugin = require('html-webpack-alter-asset-plugin')
 
 module.exports = {
    entry: {
